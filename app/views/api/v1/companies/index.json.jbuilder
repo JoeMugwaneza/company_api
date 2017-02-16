@@ -3,5 +3,4 @@ json.array!@companies.each do |company|
   json.name company.name
   json.profession company.profession
   json.logo company.logo
-  
 end
