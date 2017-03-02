@@ -1,0 +1,19 @@
+<div ng-app="app">
+<div ng-controller="companiesCtrl" ng-init="setup()">
+<h1>List of companies</h1>
+<div ng-repeat=" company in companies">
+  <p><strong>id:</strong> {{company.id}} </p>
+  <h2><strong>Name:</strong> {{company.name}} </h2>
+  <p><strong>Profession:</strong> {{company.profession}} </p>
+  <p><strong>Logo:</strong> {{company.logo}} </p>
+</div>
+<div>
+  Add a Company:
+  <p>Name: <input ng-model="newCompanyName"></p>
+  <p>Profession: <input ng-model="newCompanyProfession"></p>
+  <p>Logo: <input ng-model="newCompanyLogo"></p>
+  <button ng-click="addCompany(newCompanyName, newCompanyProfession, newCompanyLogo)">Add a Company</button>
+</div>
+
+</div>
+</div>

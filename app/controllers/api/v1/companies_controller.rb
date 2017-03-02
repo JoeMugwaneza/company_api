@@ -2,6 +2,7 @@ class Api::V1::CompaniesController < ApplicationController
 
   def index
     @companies = Company.all
+    render json: @companies
   end
 
   def show
@@ -14,7 +15,7 @@ class Api::V1::CompaniesController < ApplicationController
       profession: params[:profession], 
       logo: params[:logo])
 
-    render :show
+    render json: @company
   end 
 
   def update
