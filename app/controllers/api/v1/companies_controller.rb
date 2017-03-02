@@ -9,13 +9,17 @@ class Api::V1::CompaniesController < ApplicationController
     @company = Company.find_by(id:params[:id])
   end 
 
+  def new
+    
+  end
+
   def create
     @company = Company.create(
       name: params[:name], 
       profession: params[:profession], 
       logo: params[:logo])
 
-    render json: @company
+    render :show
   end 
 
   def update
@@ -33,6 +37,5 @@ class Api::V1::CompaniesController < ApplicationController
   def destroy
     @company = Company.find_by(id:params[:id])
     @company.destroy
-    render json: {message: "You are fired"}
   end
 end

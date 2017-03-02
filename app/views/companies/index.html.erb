@@ -1,18 +1,38 @@
 <div ng-app="app">
 <div ng-controller="companiesCtrl" ng-init="setup()">
 <h1>List of companies</h1>
-<div ng-repeat=" company in companies">
-  <p><strong>id:</strong> {{company.id}} </p>
-  <h2><strong>Name:</strong> {{company.name}} </h2>
-  <p><strong>Profession:</strong> {{company.profession}} </p>
-  <p><strong>Logo:</strong> {{company.logo}} </p>
-</div>
-<div>
-  Add a Company:
-  <p>Name: <input ng-model="newCompanyName"></p>
-  <p>Profession: <input ng-model="newCompanyProfession"></p>
-  <p>Logo: <input ng-model="newCompanyLogo"></p>
-  <button ng-click="addCompany(newCompanyName, newCompanyProfession, newCompanyLogo)">Add a Company</button>
+  Filter Companies: <input ng-model="filterQuery">
+<table>
+  <tr>
+    <th>Id</th>
+    <th ng-click="toggleOrder('name')">Name</th>
+    <th ng-click="toggleOrder('profession')">Profession</th>
+    <th>Logo</th>
+  </tr>
+  <tr ng-repeat="company in companies | filter: filterQuery | orderBy:orderAttribute">
+    <td>{{company.id}}</td>
+    <td>{{company.name}}</td>
+    <td>{{company.profession}}</td>
+    <td>{{company.logo}}</td>
+  </tr>
+</table>
+  <tr>
+  <br>
+    <td>
+      <input ng-model="companyName" placeholder="name of company">
+    </td>
+    <td>
+      <input ng-model="companyProfession" placeholder="profession of company">
+    </td>
+    <td>
+      <input ng-model="companyLogo" placeholder="logo of company"> <button ng-click="addCompany(companyName, companyProfession, companyLogo)">Add a Company</button>
+    </td>
+  </tr>
+  
+ <!--    Name: <input ng-model="company.name" ng-keyup="updateCompany(company)">
+    Profession: <input ng-model="company.profession" ng-keyup="updateCompany(company)">
+    Logo: <input ng-model="company.logo" ng-keyup="updateCompany(company)">
+    <p><button ng-click="deleteCompany(company, $index)">Delete a Company</button></p> -->
 </div>
 
 </div>
