@@ -45,8 +45,16 @@
 
     }
 
-      $scope.toggleOrder = function(attribute) {
-        $scope.orderAttribute = attribute;
+      // $scope.toggleOrder = function(attribute) {
+      //   $scope.orderAttribute = attribute;
+      // }
+
+      $scope.orderAttribute = 'name';
+      $scope.reverse = false;
+
+      $scope.sortBy = function(orderAttribute) {
+        $scope.reverse = ($scope.orderAttribute === orderAttribute) ? !$scope.reverse : true;
+        $scope.orderAttribute = orderAttribute;
       }
 
 

@@ -5,11 +5,17 @@
 <table class="table table-bordered">
   <tr>
     <th>Id</th>
-    <th ng-click="toggleOrder('name')">Name</th>
-    <th ng-click="toggleOrder('profession')">Profession</th>
+    <th ng-click="sortBy('name')">Name</th>
+
+    <span class="sortorder" ng-show="orderAttribute === 'name'" ng-class="{reverse: reverse}"></span>
+
+    <th ng-click="sortBy('profession')">Profession</th>
+
+    <span class="sortorder" ng-show="orderAttribute === 'profession'" ng-class="{reverse: reverse}"></span>
+    
     <th>Logo</th>
   </tr>
-  <tr ng-repeat="company in companies | filter: filterQuery | orderBy:orderAttribute">
+  <tr ng-repeat="company in companies | filter: filterQuery | orderBy:orderAttribute:reverse">
     <td>{{company.id}}</td>
     <td>{{company.name}}</td>
     <td>{{company.profession}}</td>
